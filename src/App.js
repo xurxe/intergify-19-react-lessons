@@ -21,22 +21,38 @@ class App extends React.Component {
         this.setState((previousState) => {
             return {
                 count: previousState.count + 1,
-            }
+            };
         });
-    }
+    };
 
     subtractOne() {
         this.setState((previousState) => {
             return {
                 count: previousState.count - 1,
-            }
+            };
         });
-    } */
+    };
+ */
 
     constructor (props) {
         super(props);
         this.state = {
             count: 0,
+            product: '',
+            products: [
+                {
+                    product: "Product 1",
+                    description: "Description 1",
+                },
+                {
+                    product: "Product 2",
+                    description: "Description 2",
+                },
+                {
+                    product: "Product 3",
+                    description: "Description 3",
+                },
+            ],
         };
     };
 
@@ -44,7 +60,7 @@ class App extends React.Component {
         this.setState((previousState) => {
             return {
                 count: previousState.count + 1,
-            }
+            };
         });
     };
 
@@ -52,8 +68,26 @@ class App extends React.Component {
         this.setState((previousState) => {
             return {
                 count: previousState.count - 1,
-            }
+            };
         });
+    };
+
+    handleChange = (e) => {
+        this.setState({todo: e.target.value});
+    };
+
+    addTodo = (todo) => {
+        this.setState((previousState) => {
+            return {
+                todos:[...previousState.todos, todo],
+            };
+        });
+    };
+
+    handleSubmit = (e) => {
+        e.preventDefault(); /* prevent default refresh */
+        this.addTodo(this.state.todo);
+        this.setState({todo: ''});
     };
 
     render() {
@@ -68,6 +102,29 @@ class App extends React.Component {
                 <h1>Count: {this.state.count}</h1>
                 <button onClick = {this.addOne}>Plus one</button>
                 <button onClick = {this.subtractOne}>Minus one</button>
+                <br />
+                <hr />
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        type="text"
+                        name="product"
+                        placeholder="Enter a product"
+                        value={this.state.product}
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        type="text"
+                        name="description"
+                        placeholder="Enter a description"
+                        value={this.state.description}
+                        onChange={this.handleChange}
+                    />
+                    <input 
+                        type="submit" 
+                        value="Add" 
+                    />
+                </form>
+                {this.state.products.map((product) => <li key={product}>{product}</li>)}
                 <Main techs = {['HTML', 'CSS', 'JavaScript']}/>
                 <StudentList students={studentsData} />
                 <Footer year = {new Date().getFullYear()} />

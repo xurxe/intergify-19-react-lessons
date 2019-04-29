@@ -38,19 +38,21 @@ class App extends React.Component {
         super(props);
         this.state = {
             count: 0,
-            product: '',
-            products: [
+            name: '',
+            description: '',
+
+            todos: [
                 {
-                    product: "Product 1",
-                    description: "Description 1",
+                    name: 'Item 1',
+                    description: 'Description 1',
                 },
                 {
-                    product: "Product 2",
-                    description: "Description 2",
+                    name: 'Item 2',
+                    description: 'Description 2',
                 },
                 {
-                    product: "Product 3",
-                    description: "Description 3",
+                    name: 'Item 3',
+                    description: 'Description 3',
                 },
             ],
         };
@@ -73,7 +75,8 @@ class App extends React.Component {
     };
 
     handleChange = (e) => {
-        this.setState({todo: e.target.value});
+        const {name, value} = e.target;
+        this.setState({[name]: value});
     };
 
     addTodo = (todo) => {
@@ -86,8 +89,13 @@ class App extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault(); /* prevent default refresh */
-        this.addTodo(this.state.todo);
-        this.setState({todo: ''});
+        const todo = {
+            name: this.state.name,
+            description: this.state.description,
+        }
+        this.addTodo(todo);
+        this.setState({name: ''});
+        this.setState({description: ''});
     };
 
     render() {
@@ -107,9 +115,9 @@ class App extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
-                        name="product"
-                        placeholder="Enter a product"
-                        value={this.state.product}
+                        name="name"
+                        placeholder="Enter a task"
+                        value={this.state.name}
                         onChange={this.handleChange}
                     />
                     <input
@@ -119,12 +127,13 @@ class App extends React.Component {
                         value={this.state.description}
                         onChange={this.handleChange}
                     />
+
                     <input 
                         type="submit" 
                         value="Add" 
                     />
                 </form>
-                {this.state.products.map((product) => <li key={product}>{product}</li>)}
+                {this.state.todos.map((todo) => <li key={todo.name}>{todo.name}: {todo.description}</li>)}
                 <Main techs = {['HTML', 'CSS', 'JavaScript']}/>
                 <StudentList students={studentsData} />
                 <Footer year = {new Date().getFullYear()} />

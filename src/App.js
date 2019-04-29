@@ -6,42 +6,16 @@ import StudentList from './components/StudentList';
 import { studentsData } from './students-data'
 
 class App extends React.Component {
-/* 
-    constructor (props) {
-        super(props);
-        this.state = {
-            count: 0,
-        };
-
-        this.addOne = this.addOne.bind(this);
-        this.subtractOne = this.subtractOne.bind(this);
-    };
-
-    addOne() {
-        this.setState((previousState) => {
-            return {
-                count: previousState.count + 1,
-            };
-        });
-    };
-
-    subtractOne() {
-        this.setState((previousState) => {
-            return {
-                count: previousState.count - 1,
-            };
-        });
-    };
- */
 
     constructor (props) {
         super(props);
         this.state = {
-            count: 0,
-            name: '',
-            description: '',
+            count: 0, // a counter for the +1 and -1 buttons
+            name: '', // name of todo
+            description: '', // description of todo
 
-            todos: [
+            todos: // array with todos
+            [ 
                 {
                     name: 'Item 1',
                     description: 'Description 1',
@@ -61,7 +35,8 @@ class App extends React.Component {
     addOne = () => {
         this.setState((previousState) => {
             return {
-                count: previousState.count + 1,
+                // take the latest state of count and add 1
+                count: previousState.count + 1, 
             };
         });
     };
@@ -69,31 +44,43 @@ class App extends React.Component {
     subtractOne = () => {
         this.setState((previousState) => {
             return {
+                // take the latest state of count and subtract 1
                 count: previousState.count - 1,
             };
         });
     };
 
     handleChange = (e) => {
+        // take name (defined by code) and value (entered by user)
         const {name, value} = e.target;
+        // change state
         this.setState({[name]: value});
     };
 
     addTodo = (todo) => {
-        this.setState((previousState) => {
+        // take the latest state of todos
+        this.setState((previousState) => { 
             return {
-                todos:[...previousState.todos, todo],
+                // add new todo at the end
+                todos:[...previousState.todos, todo], 
             };
         });
     };
 
     handleSubmit = (e) => {
-        e.preventDefault(); /* prevent default refresh */
+        // prevent default refresh
+        e.preventDefault();
+
+        // create todo from name and description in state
         const todo = {
             name: this.state.name,
             description: this.state.description,
         }
+        
+        // add todo
         this.addTodo(todo);
+
+        // reset name and description input fields
         this.setState({name: ''});
         this.setState({description: ''});
     };
@@ -107,12 +94,21 @@ class App extends React.Component {
                     lastName="Yetayeh"
                     year={new Date().getFullYear()}
                 />
+                {/* display current count */}
                 <h1>Count: {this.state.count}</h1>
+
+                {/* +1 button */}
                 <button onClick = {this.addOne}>Plus one</button>
+
+                {/* -1 button */}
                 <button onClick = {this.subtractOne}>Minus one</button>
                 <br />
                 <hr />
+
+                {/* form element so that we have submit functionality */}
                 <form onSubmit={this.handleSubmit}>
+
+                    {/* name input field */}
                     <input
                         type="text"
                         name="name"
@@ -120,6 +116,8 @@ class App extends React.Component {
                         value={this.state.name}
                         onChange={this.handleChange}
                     />
+
+                    {/* description input field */}
                     <input
                         type="text"
                         name="description"
@@ -128,12 +126,16 @@ class App extends React.Component {
                         onChange={this.handleChange}
                     />
 
+                    {/* submit button */}
                     <input 
                         type="submit" 
                         value="Add" 
                     />
                 </form>
+
+                {/* map todo list to display list of "name: description" */}
                 {this.state.todos.map((todo) => <li key={todo.name}>{todo.name}: {todo.description}</li>)}
+                
                 <Main techs = {['HTML', 'CSS', 'JavaScript']}/>
                 <StudentList students={studentsData} />
                 <Footer year = {new Date().getFullYear()} />

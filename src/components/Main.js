@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Main = ({ techs }) => {
   const techList = techs.map((tech, i) => <li key={"tech" + i}>{tech}</li>);
@@ -9,4 +10,9 @@ const Main = ({ techs }) => {
     </main>
   );
 };
+
+Main.propTypes = {
+  techs: PropTypes.arrayOf(PropTypes.string).isRequired,
+}
+
 export default Main;

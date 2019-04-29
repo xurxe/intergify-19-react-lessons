@@ -4,7 +4,7 @@ const Student = (props) => {
     const skillList = skills.map((skill) => <li key={skill}>{skill}</li>)
     return <div className="student">
         <img src={imgUrl} alt= {firstName} />
-        <h4>{firstName.toUpperCase()}</h4>
+        <h4>{firstName.toUpperCase() + " " + lastName.toUpperCase()}</h4>
         <p>{title}</p>
         <details>
         <summary>Skills</summary>

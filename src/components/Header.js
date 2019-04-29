@@ -1,4 +1,6 @@
 import React from "react";
+
+// import PropTypes
 import PropTypes from "prop-types";
 
 const Header = ({ firstName, lastName, title, year }) => (
@@ -10,12 +12,18 @@ const Header = ({ firstName, lastName, title, year }) => (
 );
 
 Header.defaultProps = {
+  // default title
   title: 'Default title',
+
+  // default firstName
   firstName: "Name",
-  type: 'text', /* this makes it so that the default input type is text */
+
+  // the default input type: text
+  type: 'text', 
 }
 
 Header.propTypes = {
+  // required as a string
   title: PropTypes.string.isRequired,
 }
 

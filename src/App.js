@@ -10,11 +10,17 @@ class App extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            count: 0, // a counter for the +1 and -1 buttons
-            name: '', // name of todo
-            description: '', // description of todo
-
-            todos: // array with todos
+            // counter for the +1 and -1 buttons
+            count: 0,
+            
+            // name of todo
+            name: '', 
+            
+            // description of todo
+            description: '', 
+            
+            // array with todos
+            todos: 
             [ 
                 {
                     name: 'Item 1',
@@ -135,7 +141,7 @@ class App extends React.Component {
 
                 {/* map todo list to display list of "name: description" */}
                 {this.state.todos.map((todo) => <li key={todo.name}>{todo.name}: {todo.description}</li>)}
-                
+
                 <Main techs = {['HTML', 'CSS', 'JavaScript']}/>
                 <StudentList students={studentsData} />
                 <Footer year = {new Date().getFullYear()} />

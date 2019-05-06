@@ -1,0 +1,25 @@
+Class notes:
+
+1. Console
+    npx create-react-app react-form
+    cd react-form
+    yarn start
+    npm start 
+
+2. README.md:
+    - clean (it comes with default content)
+
+3. package.json
+    - One of the reasons JS has become so popular is node.js and npm (node package manager)
+    - this file lists all the packages you use:
+        - dependencies: main packages that are required for the application to work
+        - dev dependencies: for developement purposes, don't affect the production build in the end
+
+4. Console
+    yarn add react-router-dom
+
+5. Create index.html
+    import React from 'react'
+    import ReactDOM from 'react-dom
+
+6. ! Read about functional vs class-based components

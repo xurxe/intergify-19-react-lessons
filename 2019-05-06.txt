@@ -23,3 +23,5 @@ Class notes:
     import ReactDOM from 'react-dom
 
 6. ! Read about functional vs class-based components
+
+7. ! Read about presentational vs parent components

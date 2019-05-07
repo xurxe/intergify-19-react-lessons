@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import AddUser from './components/AddUser.js'
+
 
 const root = document.getElementById("root");
 
@@ -42,6 +44,7 @@ const Greeting = (props) => {
         <h3>Welcome, {name}!</h3>
     );
 };
+
 class Site extends React.Component {
     state = {
         count: 0,
@@ -160,6 +163,10 @@ class Site extends React.Component {
                     type='submit'
                     ></input>
                 </form>
+
+                <br />
+
+                <AddUser></AddUser>
             </div>
         )
     }

@@ -1,0 +1,16 @@
+COMPONENT LIFECYCLE
+
+- Mount: create
+- Update: change
+- Unmount: destroy
+
+1. Mount
+- componentWillMount() (deprecated)
+- componentWillReceiveProps()
+- componentDidMount()
+
+2. Update
+- 
+
+3. Unmount 
+- componenWillUnmount()

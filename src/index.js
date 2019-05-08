@@ -172,6 +172,45 @@ class Site extends React.Component {
     }
 }
 
+class Site1 extends React.Component {
+    constructor(props) {
+        super(props)
+        /* console.log('Constructor') */
+    }
+
+    state = {
+        countries: [],
+    }
+
+    componentDidMount() {
+        const api = 'https://restcountries.eu/rest/v2/all'
+        fetch(api)
+        .then(response => response.json())
+        .then((data) => {
+            this.setState({
+                countries: data,
+            })
+            console.log(this.state.countries)
+        })
+        /* console.log('Component did mount') */
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return true
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        /* console.log(prevProps, prevState)
+        console.log('Component did update') */
+        /* localStorage.setItem('countries', JSON.stringify(this.state.countries)) */
+    }
+
+    render() {
+        /* console.log('Render') */
+        return null
+    }
+}
+
 ReactDOM.render(
-    <Site></Site>, root
+    <Site1></Site1>, root
 )
